@@ -1,23 +1,18 @@
 """
-This script simulates a spin 1/2-particle which is exposed to a magnetic
-field. This field has both a static part and a dynamic part. The dynamic part
-corresponds to a single cycle of a sine-like function.
-The static field points in the z-direction, thus lifting the degenerecy
-between spin up and spin down. The oscillating field is taken to point along
-the x-axis, corresponding to a real coupling in the Hamiltonian.
-The initial state is a spin up-state.
-The implementation solves the Schrödinger equation (TDSE) by using the
-SciPy function solve_ivp. It determines the probability to remain in the
-spin up-state after interaction for various values of the angular frequency
-omega.
-The inputs are
-Eps - the energy separation induced by the static field
-W - the strength of the oscillating field
-omega_min - minimal omega
-omega_max - maximum omega
-N_omega - the number of omega values to impose
-All inputs are hard coded initially.
-"""
+This script simulates a spin 1/2-particle which is exposed to a magnetic 
+field which more or less slowly goes from pointning in the negative 
+x-direction to the positive z-direction.
+
+The initial state is a spin right-state, i.e., the ground state of the
+initial Hamiltonian, H_i = -\sigma_x.
+
+The implementation solves the Schrödinger equation (TDSE) by using the 
+SciPy function solve_ivp. 
+
+It solves the evolution for a number of durations T. In the end, it plots 
+the probability for ending up in the final ground state as a function of T.
+
+The inputs are the shortest T, the longest T and the steps size in T."""
 
 # Libraries
 import numpy as np
