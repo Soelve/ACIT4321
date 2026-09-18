@@ -12,8 +12,8 @@ SciPy function solve_ivp. It plots the  probability of a spin up-measurement
 as a function of time.
 
 The inputs are
-E     - the energy separation induced by the static field
-Omega - the strength of the oscillating field
+B0     - the energy separation induced by the static field
+Bx - the strength of the oscillating field
 w     - the angular frequency of the oscillating field
 OpticalCycles - the duration of the simulation, given by the number of 
 periods of the oscillating field.
@@ -27,8 +27,8 @@ from matplotlib import pyplot as plt
 from scipy import integrate
 
 # Parameters for the magnetic field
-E = 1
-Omega = 0.1
+B0 = 1
+Bx = 0.2
 w = 1.1
 
 # Duration of the simulation
@@ -39,11 +39,11 @@ Tfinal = OpticalCycles*2*np.pi/w
 # y'(t) = -i H(t) y(t), where y is the spinor and H is
 # the Hamiltonian
 # Static part of the Hamiltonian
-H0 = np.array([[-E/2, 0], [0, E/2]])
+H0 = np.array([[-B0/2, 0], [0, B0/2]])
 # The coupling
 Interaction = np.array([[0, 1], [1, 0]])
 def RHS(t, y):
-  Ham = H0 + Omega*np.sin(w*t)*Interaction
+  Ham = H0 + Bx/2*np.sin(w*t)*Interaction
   Yderiv = np.matmul(Ham, y)
   return -1j*Yderiv
   
