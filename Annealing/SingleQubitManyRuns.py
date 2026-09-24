@@ -21,7 +21,7 @@ from scipy import integrate
 
 # Upper and lower limit for Tfinal
 Tfinal_min = .1
-Tfinal_max = 10
+Tfinal_max = 3
 # The number of points
 N_Tf = 100
 
